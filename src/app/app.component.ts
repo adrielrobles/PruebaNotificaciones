@@ -32,7 +32,6 @@ export class AppComponent {
     if (this.filterForm.invalid) {
       return;
     }
-    this.filtrado = true;
     this.enviarnotificacion();
 
   }
@@ -43,11 +42,11 @@ export class AppComponent {
 
 
   private enviarnotificacion() {
-      console.log(this.filterForm.get("mensaje")!.value)
-      console.log(this.filterForm.get("tituloNot")!.value)
-      console.log(this.filterForm.get("proyecto")!.value)
+      
       let model:string[] = [this.filterForm.get("proyecto")!.value,this.filterForm.get("mensaje")!.value,this.filterForm.get("tituloNot")!.value,"LOTE"];
-      this.apinotificacion.obtener(model).subscribe();
+      this.apinotificacion.obtener(model).subscribe((res) =>{
+        console.log(res)
+      });
     }
   
 
